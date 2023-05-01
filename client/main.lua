@@ -14,6 +14,41 @@ local CurrentStash = nil
 local isCrafting = false
 local isHotbar = false
 
+
+local PlayerPedPreview = nil
+
+function CreatePedScreen()
+	CreateThread(function()
+		heading = GetEntityHeading(PlayerPedId())
+		upaljeno = true
+		SetFrontendActive(true)
+		ActivateFrontendMenu(GetHashKey("FE_MENU_VERSION_EMPTY_NO_BACKGROUND"), true, -1)
+		Citizen.Wait(100)
+		N_0x98215325a695e78a(false)
+
+ 		PlayerPedPreview = ClonePed(PlayerPedId(), heading, true, false)
+ 		local x,y,z = table.unpack(GetEntityCoords(PlayerPedPreview))
+ 		SetEntityCoords(PlayerPedPreview, x,y,z-100)
+ 		FreezeEntityPosition(PlayerPedPreview, true)
+		SetEntityVisible(PlayerPedPreview, false, false)
+		NetworkSetEntityInvisibleToNetwork(PlayerPedPreview, false)
+		Wait(200)
+		SetPedAsNoLongerNeeded(PlayerPedPreview)
+		GivePedToPauseMenu(PlayerPedPreview, 1)
+		SetPauseMenuPedLighting(true)
+		SetPauseMenuPedSleepState(true)
+		ReplaceHudColourWithRgba(117, 0, 0, 0, 0) --transparent
+	end)
+end
+
+function DeletePedScreen()
+	DeleteEntity(PlayerPedPreview)
+   	SetFrontendActive(false)
+    ReplaceHudColourWithRgba(117, 0, 0, 0, 186)
+   	PlayerPedPreview = nil
+end
+
+
 --#endregion Variables
 
 --#region Functions
@@ -170,6 +205,8 @@ end
 
 ---Closes the inventory NUI
 local function closeInventory()
+    DeletePedScreen()
+	SetNuiFocus(false,false)
     SendNUIMessage({
         action = "close",
     })
@@ -442,11 +479,14 @@ end)
 
 RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventory, other)
     if not IsEntityDead(PlayerPedId()) then
+        CreatePedScreen()
         ToggleHotbar(false)
         SetNuiFocus(true, true)
+
         if other then
             currentOtherInventory = other.name
         end
+
         SendNUIMessage({
             action = "open",
             inventory = inventory,
@@ -456,6 +496,7 @@ RegisterNetEvent('inventory:client:OpenInventory', function(PlayerAmmo, inventor
             Ammo = PlayerAmmo,
             maxammo = Config.MaximumAmmoValues,
         })
+
         inInventory = true
     end
 end)
@@ -865,6 +906,7 @@ RegisterNUICallback("CloseInventory", function(_, cb)
         CurrentVehicle = nil
         CurrentGlovebox = nil
         CurrentStash = nil
+        DeletePedScreen()
         SetNuiFocus(false, false)
         inInventory = false
         ClearPedTasks(PlayerPedId())
@@ -884,6 +926,7 @@ RegisterNUICallback("CloseInventory", function(_, cb)
         TriggerServerEvent("inventory:server:SaveInventory", "drop", CurrentDrop)
         CurrentDrop = nil
     end
+    DeletePedScreen()
     SetNuiFocus(false, false)
     inInventory = false
     cb('ok')

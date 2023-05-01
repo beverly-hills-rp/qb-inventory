@@ -19,19 +19,27 @@ server_scripts {
 client_script 'client/main.lua'
 
 ui_page {
-    'html/ui.html'
+    'web/dist/index.html'
 }
 
 files {
-    'html/ui.html',
-    'html/css/main.css',
-    'html/js/app.js',
-    'html/images/*.png',
-    'html/images/*.jpg',
-    'html/ammo_images/*.png',
-    'html/attachment_images/*.png',
-    'html/*.ttf'
+    'web/dist/**/*.*'
 }
+
+-- ui_page {
+--     'html/ui.html'
+-- }
+
+-- files {
+--     'html/ui.html',
+--     'html/css/main.css',
+--     'html/js/app.js',
+--     'html/images/*.png',
+--     'html/images/*.jpg',
+--     'html/ammo_images/*.png',
+--     'html/attachment_images/*.png',
+--     'html/*.ttf'
+-- }
 
 dependecy 'qb-weapons'
 

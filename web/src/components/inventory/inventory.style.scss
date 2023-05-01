@@ -1,0 +1,262 @@
+@import '@styles/_import';
+
+.inventory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 33.625rem;
+
+    background-color: $color-davys-grey-65;
+
+    border-radius: $border-radius-md;
+
+    .header {
+        display: grid;
+
+        position: relative;
+
+        align-items: center;
+
+        width: 33.625rem;
+        height: 4.25rem;
+
+        background-color: $color-smoky-black-75;
+
+        color: $color-white;
+
+        border-radius: $border-radius-md $border-radius-md 0 0;
+
+        border-width: 0.188rem 0.188rem 0rem 0.188rem;
+        border-style: solid;
+        border-color: $color-quartz-15;
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            height: 100%;
+
+            margin: auto 2.5rem auto 2.5rem;
+
+            .row {
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+
+                height: 100%;
+
+                margin: auto 0;
+
+                justify-content: center;
+
+                .title {
+                    font-size: 1.5rem;
+                    text-transform: uppercase;
+                    color: $color-white;
+                    font-weight: 500;
+                }
+
+                .weight {
+                    font-size: 1.5rem;
+                    color: $color-white;
+                    text-align-last: end;
+                    padding: 0 0.625rem;
+
+                    p::after {
+                        content: 'KG';
+                        font-size: 1rem;
+                        font-weight: 500;
+                        color: $color-chinese-silver;
+                    }
+                }
+
+                .progress-bar {
+                    display: flex;
+
+                    position: relative;
+
+                    width: 100%;
+                    height: 0.5rem;
+
+                    margin: 0.313rem 0;
+
+                    background-color: $color-smoky-black-25;
+
+                    border-radius: $border-radius-md;
+
+                    .progress {
+                        display: flex;
+                        flex: 1;
+
+                        position: absolute;
+
+                        width: 0%;
+                        height: 100%;
+
+                        background-color: $color-crayola;
+
+                        border-radius: $border-radius-md;
+                    }
+                }
+            }
+        }
+    }
+
+    > .grid {
+        display: grid;
+
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(9, 1fr);
+        column-gap: 0.188rem;
+        row-gap: 0.188rem;
+
+        width: 33.625rem;
+        height: 41.5rem;
+
+        padding: 0.438rem 1.188rem 0rem 0.438rem;
+
+        background-color: $color-smoky-black-20;
+
+        border-radius: 0 0 $border-radius-md $border-radius-md;
+
+        overflow-y: visible;
+
+        border-width: 0rem 0.188rem 0.188rem 0.188rem;
+        border-style: solid;
+        border-color: $color-quartz-15;
+    }
+}
+
+.slot {
+    display: flex;
+    flex: 1;
+
+    position: relative;
+
+    width: 6.25rem;
+    height: 6.25rem;
+
+    border-radius: $border-radius-md;
+
+    &:not(:empty) {
+        .key {
+            display: flex;
+            flex: 1;
+
+            position: absolute;
+
+            width: 1.25rem;
+            height: 1.25rem;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 0.75rem;
+            font-weight: 300;
+            text-align: center;
+            line-height: 1.25rem;
+            color: $color-white;
+
+            background-color: $color-crayola;
+
+            border-radius: $border-radius-md 0 $border-radius-md 0;
+        }
+    }
+
+    &:not(:has(.item)) {
+        background-color: $color-smoky-black-25;
+        border: 0.063rem dashed $color-white-25;
+
+        .key {
+            display: flex;
+            flex: 1;
+
+            position: absolute;
+
+            width: 100%;
+            height: 100%;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.5rem;
+            font-weight: 300;
+            text-align: center;
+            color: $color-white;
+
+            background-color: $color-crayola-40;
+
+            border-radius: $border-radius-md 0 $border-radius-md 0;
+        }
+    }
+}
+
+.item {
+    display: flex;
+    flex: 1;
+
+    width: 6.25rem;
+    height: 6.25rem;
+
+    background-color: $color-smoky-black-60;
+    background-repeat: no-repeat;
+    background-position: 50% 60%;
+    background-size: 4rem;
+
+    cursor: pointer;
+
+    border: none;
+
+    .quantity {
+        display: flex;
+        flex: 1;
+
+        position: absolute;
+
+        right: 0;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 0.75rem;
+        font-weight: 300;
+        line-height: 0.75rem;
+        color: $color-white;
+
+        margin: 0.375rem 0.375rem auto auto;
+
+        &::after {
+            content: 'x';
+
+            color: $color-crayola;
+        }
+    }
+
+    .price {
+        display: flex;
+        flex: 1;
+
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+
+        align-items: center;
+        justify-content: center;
+
+        font-size: 0.75rem;
+        font-weight: 300;
+        line-height: 0.75rem;
+        color: $color-white;
+
+        margin: auto auto 0.375rem 0.375rem;
+
+        &::before {
+            content: '$';
+
+            color: $color-crayola;
+        }
+    }
+}

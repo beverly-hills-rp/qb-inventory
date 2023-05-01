@@ -1,0 +1,45 @@
+@import '@styles/_import';
+
+.actions {
+    position: absolute;
+
+    top: -3rem;
+    left: 0;
+
+    display: flex;
+    flex: 1;
+
+    justify-content: flex-end;
+
+    width: 33.625rem;
+
+    input {
+        width: 10rem;
+        height: 2.8125rem;
+
+        background-color: $color-smoky-black-50;
+
+        border: 0.1875rem solid $color-smoky-black-60;
+        border-radius: $border-radius;
+        outline: none;
+
+        font-style: normal;
+        font-size: 1.125rem;
+        line-height: 1.125rem;
+        color: $color-white;
+        text-align: center;
+
+        transition: background 0.3s;
+
+        &::placeholder {
+            color: $color-white-50;
+        }
+    }
+
+    .action-button {
+        width: 2.8125rem;
+        height: 2.8125rem;
+
+        margin-right: 0.25rem;
+    }
+}

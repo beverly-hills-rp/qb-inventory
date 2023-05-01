@@ -1,0 +1,47 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "baseUrl": "./",
+        "outDir": "./dist",
+        "sourceMap": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "noImplicitReturns": false,
+        "noImplicitAny": false,
+        "forceConsistentCasingInFileNames": true,
+        "jsx": "react",
+        "jsxFactory": "createElement",
+        "jsxFragmentFactory": "createFragment",
+        "paths": {
+            "@components/*": [
+                "./src/components/*"
+            ],
+            "@types": [
+                "./src/types/index"
+            ],
+            "@lib": [
+                "./src/lib/index"
+            ],
+            "@assets/*": [
+                "./src/assets/*"
+            ],
+            "@utils": [
+                "./src/utils/index"
+            ],
+            "@enum/*": [
+                "./src/shared/enums/*"
+            ],
+            "@helpers": [
+                "./src/helpers/index"
+            ]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "./node_modules",
+        "./dist"
+    ]
+}

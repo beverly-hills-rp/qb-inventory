@@ -1,0 +1,107 @@
+@import '@styles/responsive';
+@import '@styles/fonts';
+@import '@styles/_import';
+
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+
+    font-family: $font-primary;
+
+    text-decoration: none;
+    outline: none;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+::-webkit-scrollbar {
+    width: 0.313rem;
+}
+
+::-webkit-scrollbar-track {
+    background: $color-smoky-black-25;
+    border-radius: $border-radius;
+
+    margin: 0.438rem 0.125rem 0.438rem auto;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $color-crayola;
+    border-radius: $border-radius;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $color-granny-smith-apple;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    // background-image: url('https://adrenaline.com.br/uploads/chamadas/CHAMADA-GTA.jpg');
+    // background-repeat: no-repeat;
+    // background-position: 50%;
+    // background-size: cover;
+}
+
+#root {
+    display: flex;
+    flex: 1;
+
+    z-index: 1;
+
+    width: 100vw;
+    height: 100vh;
+
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+}
+
+.container {
+    display: flex;
+
+    align-items: center;
+    align-content: center;
+    justify-content: space-around;
+
+    position: relative;
+    overflow: visible;
+}
+
+.dragging {
+    position: fixed !important;
+    z-index: 999 !important;
+
+    opacity: 0.75 !important;
+
+    cursor: grab !important;
+}
+
+#drag-helper {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+}
+
+.drag-over {
+    border: 0.125rem dashed blue !important;
+}

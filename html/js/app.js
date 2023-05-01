@@ -565,7 +565,7 @@ function FormatItemInfo(itemData) {
             var str = ""+ itemData.info.cardNumber + "";
             var res = str.slice(12);
             var cardNumber = "************" + res;
-            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');			
+            $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');
         } else if (itemData.name == "labkey") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p>");
@@ -1425,7 +1425,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
                             .html(qualityLabel);
                     }
                 }
-				
+
                 $fromInv
                     .find("[data-slot=" + $fromSlot + "]")
                     .data("item", newDataFrom);
@@ -1573,7 +1573,7 @@ function swap($fromSlot, $toSlot, $fromInv, $toInv, $toAmount) {
             );
         } else {
             if (fromData.amount == $toAmount) {
-                if (toData && toData.unique){            
+                if (toData && toData.unique){
                     InventoryError($fromInv, $fromSlot);
                     return;
                 }
@@ -2370,8 +2370,7 @@ var requiredItemOpen = false;
             $.each(data.inventory, function(i, item) {
                 if (item != null) {
                     totalWeight += item.weight * item.amount;
-                    var ItemLabel =
-                        '<div class="item-slot-label"><p>' + item.label + "</p></div>";
+                    var ItemLabel = '<div class="item-slot-label"><p>' + item.label + "</p></div>";
                     if (item.name.split("_")[0] == "weapon") {
                         if (!Inventory.IsWeaponBlocked(item.name)) {
                             ItemLabel =
@@ -2867,6 +2866,7 @@ var requiredItemOpen = false;
 
     window.onload = function(e) {
         window.addEventListener("message", function(event) {
+            console.log(JSON.stringify(event.data));
             switch (event.data.action) {
                 case "open":
                     Inventory.Open(event.data);

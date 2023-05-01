@@ -1,0 +1,118 @@
+@import '@styles/_import';
+
+.tooltip-content {
+    display: flex;
+    flex-direction: column;
+
+    width: 17.5rem;
+
+    padding: 0.625rem;
+
+    background-color: $color-charleston-green-95;
+
+    border-radius: $border-radius-md;
+    border-width: 0.1875rem;
+    border-style: solid;
+    border-color: $color-quartz-15;
+
+    .tooltip-header {
+        display: flex;
+        flex-direction: row;
+
+        margin-bottom: 0.625rem;
+
+        .item-image {
+            width: 3.125rem;
+            height: 3.125rem;
+
+            margin-right: 0.625rem;
+
+            border-radius: $border-radius-md;
+
+            background-color: $color-smoky-black-75;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: 2rem;
+        }
+
+        .item-label {
+            font-size: 1rem;
+            color: $color-white;
+            font-weight: 500;
+
+            text-align: left;
+            align-self: center;
+        }
+    }
+
+    .tooltip-info {
+        padding: 0.5rem 0.25rem;
+        margin-bottom: 0.625rem;
+
+        font-size: 0.875rem;
+        color: $color-white;
+        font-weight: 300;
+        white-space: pre-wrap;
+    }
+
+    .tooltip-tags {
+        display: flex;
+        flex-direction: row;
+
+        margin-bottom: 0.625rem;
+
+        .tag {
+            background-color: $color-chinese-silver-70;
+            border-radius: $border-radius;
+
+            padding: 0.125rem 0.5rem;
+            margin: auto 0.25rem;
+
+            font-size: 0.875rem;
+            color: $color-white;
+            font-weight: 400;
+
+            text-align: center;
+            align-self: center;
+        }
+    }
+
+    .tooltip-description {
+        background-color: $color-smoky-black-75;
+        border-radius: $border-radius-md;
+
+        padding: 0.5rem 0.25rem;
+
+        margin-bottom: 0.625rem;
+
+        font-size: 0.875rem;
+        color: $color-white;
+        text-align: center;
+    }
+
+    .tooltip-footer {
+        display: flex;
+        flex-direction: row;
+        flex: 1;
+
+        align-self: end;
+
+        .item-price {
+            font-size: 1rem;
+            color: $color-white;
+            font-weight: 500;
+
+            text-align: left;
+            align-self: center;
+        }
+
+        .item-weight {
+            font-size: 0.875rem;
+            color: $color-white;
+            font-weight: 400;
+
+            text-align: end;
+            align-self: end;
+        }
+    }
+}
